@@ -2,10 +2,52 @@
 
 HTML 是 Hypertext Markup Language 的缩写，即超文本标记语言：
 
-都是 ML 结尾，共同点就是都是标记语言。
--HTML，超文本标记语言，是语法较为松散的、不严格的 Web 语言；
--XML，可扩展标记语言，主要用于存储数据和结构[参考]-(http://w3school.com.cn/xml/xml_intro.asp)；
--XHTML，可扩展超文本标记语言，基于 XML，作用与 HTML 类似，但语法更严格参考。
+_**都是 ML 结尾，共同点就是都是标记语言。**_
+
+- HTML，超文本标记语言，是语法较为松散的、不严格的 Web 语言；
+- XML，可扩展标记语言，主要用于存储数据和结构[参考]-(http://w3school.com.cn/xml/xml_intro.asp)；
+- XHTML，可扩展超文本标记语言，基于 XML，作用与 HTML 类似，但语法更严格参考。
+
+**一、元素类型**
+
+**（一）块级元素**
+
+- 特点：(1)占据一整行。
+  即使设置宽度，右边多余的部分也会用 margin 进行填充
+  （2）可以设置宽高
+  (3)块级元素可以嵌套所有的行内元素以及部分的块级元素
+  有语义的标签最好不要套 div 标签 p>div p>p
+  应用场景：怎么实现块级元素在父容器里水平居中？
+  margin:0 auto
+  总结：body、h1-h6、p、列表 ul>li ol>li dl>dt>dd
+
+**（二）行内元素**
+
+- 特点：（1）宽高由内容决定，不能设置宽高
+  （2）宽高由内容决定，不能设置宽高
+  （3）行内元素也遵循盒模型，但是设置上下的内外框无效
+
+```html
+应用：行内元素如何实现在容器的水平居中； 给其父容器添加text-align；center；
+总结：加粗、倾斜、a、span、img、input、textarea
+```
+
+```html
+如何实现元素在容器的垂直方向上居中 *1.设置一把尺子* width,height = 父容器的高度
+*2.该元素与尺子* display:inline-block; vertical-align:middle
+```
+
+```html
+This is a regular paragraph.
+
+<table>
+  <tr>
+    <td>Foo</td>
+  </tr>
+</table>
+
+This is another regular paragraph.
+```
 
 # 技术点
 
