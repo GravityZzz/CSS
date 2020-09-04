@@ -1,0 +1,23 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "css",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GravityZzz/CSS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GravityZzz/CSS/issues"
+  },
+  "homepage": "https://github.com/GravityZzz/CSS#readme",
+  "dependencies": {
+    "antd": "^4.6.2",
+    "react": "^16.13.1"
+  }
+}
