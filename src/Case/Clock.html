@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    .clock {
+        float: left;
+        width: 204px;
+        height: 204px;
+        border: 2px solid black;
+        margin: 150px 150px;
+        border-radius: 50%;
+        position: relative
+    }
+
+    .clock .scale {
+        width: 6px;
+        height: 200px;
+        background: #ccc;
+        position: absolute;
+        left: 50%;
+        top: 3px;
+        margin-left: -3px;
+    }
+
+    .clock .scale-30 {
+        transform: rotate(30deg)
+    }
+
+    .clock .scale-60 {
+        transform: rotate(60deg)
+    }
+
+    .clock .scale-90 {
+        transform: rotate(90deg)
+    }
+
+    .clock .scale-120 {
+        transform: rotate(120deg)
+    }
+
+    .clock .scale-150 {
+        transform: rotate(150deg)
+    }
+
+    .clock .scale-180 {
+        transform: rotate(180deg)
+    }
+
+    .clock .include {
+        width: 162px;
+        height: 162px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%)
+    }
+
+    .clock .blank2 {
+        width: 12px;
+        height: 12px;
+        background: #ccc;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .clock .pointer {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -100%) rotate(0deg);
+        transform-origin: center bottom;
+    }
+
+    .clock .second {
+        width: 2px;
+        height: 80px;
+        background: red;
+        animation: rotate 60s steps(60) infinite;
+    }
+
+    .clock .minute {
+        width: 4px;
+        height: 60px;
+        background: blue;
+        animation: rotate 3600s infinite;
+    }
+
+    .clock .hour {
+        width: 6px;
+        height: 40px;
+        background: green;
+        animation: rotate 43200s infinite;
+    }
+
+    @keyframes rotate {
+        0% {
+        }
+        100% {
+            transform: translate(-50%, -100%) rotate(360deg)
+        }
+    }
+</style>
+<body>
+<div class="clock">
+    <div class="scale scale-30"></div>
+    <div class="scale scale-60"></div>
+    <div class="scale scale-90"></div>
+    <div class="scale scale-120"></div>
+    <div class="scale scale-150"></div>
+    <div class="scale scale-180"></div>
+    <div class="include"></div>
+    <div class="center"></div>
+    <div class="second pointer"></div>
+    <div class="minute pointer"></div>
+    <div class="hour pointer"></div>
+</div>
+<div class="sport"></div>
+</body>
+</html>

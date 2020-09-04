@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    .pokerBox {
+        overflow: hidden;
+        position: relative;
+        width: 1000px;
+        height: 1000px;
+    }
+
+    .pokerBox img {
+        float: left;
+        border: 1px solid black;
+        margin: 300px 400px 0 400px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: all 4s;
+        transform-origin: 100% 0;
+    }
+
+    .pokerBox:hover img:nth-of-type(1) {
+        transform: rotate(60deg)
+    }
+
+    .pokerBox:hover img:nth-of-type(2) {
+        transform: rotate(120deg)
+    }
+
+    .pokerBox:hover img:nth-of-type(3) {
+        transform: rotate(180deg)
+    }
+
+    .pokerBox:hover img:nth-of-type(4) {
+        transform: rotate(240deg)
+    }
+
+    .pokerBox:hover img:nth-of-type(5) {
+        transform: rotate(300deg)
+    }
+
+    .pokerBox:hover img:nth-of-type(6) {
+        transform: rotate(360deg)
+    }
+</style>
+<body>
+<div class="pokerBox">
+    <img src="../images/poker_1.png"/>
+    <img src="../images/poker_2.png"/>
+    <img src="../images/poker_1.png"/>
+    <img src="../images/poker_2.png"/>
+    <img src="../images/poker_1.png"/>
+    <img src="../images/poker_2.png"/>
+</div>
+</body>
+</html>

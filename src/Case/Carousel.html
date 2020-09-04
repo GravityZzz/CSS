@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    ul {
+        list-style: none
+    }
+
+    li {
+        text-decoration: none
+    }
+
+    .box {
+        margin: 150px auto;
+        width: 1050px;
+        border: 10px solid #ccc;
+        overflow: hidden;
+    }
+
+    .box ul {
+        width: 200%;
+        overflow: hidden;
+        animation: move 4s infinite linear;
+    }
+
+    .box ul li {
+        float: left;
+    }
+
+    .box ul li img {
+        display: block;
+        width: 150px;
+        height: 100px;
+    }
+
+    @keyframes move {
+        0% {
+        }
+        100% {
+            transform: translate(-1050px);
+        }
+    }
+</style>
+<body>
+<div class="box">
+    <ul>
+        <li><img src="../images/carousel_1.jpg"></li>
+        <li><img src="../images/carousel_2.jpg"></li>
+        <li><img src="../images/carousel_3.jpg"></li>
+        <li><img src="../images/carousel_4.jpg"></li>
+        <li><img src="../images/carousel_5.jpg"></li>
+        <li><img src="../images/carousel_6.jpg"></li>
+        <li><img src="../images/carousel_7.jpg"></li>
+        <li><img src="../images/carousel_1.jpg"></li>
+        <li><img src="../images/carousel_2.jpg"></li>
+        <li><img src="../images/carousel_3.jpg"></li>
+        <li><img src="../images/carousel_4.jpg"></li>
+        <li><img src="../images/carousel_5.jpg"></li>
+        <li><img src="../images/carousel_6.jpg"></li>
+        <li><img src="../images/carousel_7.jpg"></li>
+    </ul>
+</div>
+</body>
+</html>

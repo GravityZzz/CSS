@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0 auto
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%
+        }
+
+        .box {
+            margin: 100px auto;
+            width: 200px;
+            height: 200px;
+            transition: all 4s;
+            transform-style: preserve-3d;
+            perspective: 2000px;
+            position: relative;
+            prespective-origin: -200px -200px;
+        }
+
+        .box .children {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0.8
+        }
+
+        .box .front {
+            background: red;
+            transform: translateZ(100px)
+        }
+
+        .box .back {
+            background: orange;
+            transform: translateZ(-100px)
+        }
+
+        .box .left {
+            background: yellow;
+            transform: translateX(-100px) rotateY(-90deg)
+        }
+
+        .box .right {
+            background: green;
+            transform: translateX(-100px) rotateY(90deg)
+        }
+
+        .box .top {
+            background: blue;
+            transform: translateY(-100px) rotateX(90deg)
+        }
+
+        .box .bottom {
+            background: purple;
+            transform: translateY(100px) rotateX(-90deg)
+        }
+
+        .box:hover {
+            transform: rotateX(30deg) rotateY(60deg)
+        }
+
+    </style>
+</head>
+.
+
+<body>
+<div class="box">
+    <div class="front children"></div>
+    <div class="back children"></div>
+    <div class="left children"></div>
+    <div class="right children"></div>
+    <div class="top children"></div>
+    <div class="bottom children"></div>
+</div>
+</body>
+</html>

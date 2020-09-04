@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    .bubble {
+        float: left;
+        margin: 100px auto;
+        width: 400px;
+        height: 200px;
+        border: 1px solid #ccc;
+        background: url("../images/paopao.png") left top, url("../images/paopao.png") right bottom;
+        background-color: pink;
+        transition: all 4s;
+    }
+
+    .bubble:hover {
+        background-position: left bottom, right top
+    }
+
+</style>
+<body>
+<div class="bubble"></div>
+</body>
+</html>
