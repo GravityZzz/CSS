@@ -1,11 +1,11 @@
 # 认识 React
 
-React 是 facebook 开源的一套框架，可总结为以下几个特点：
+HTML 是 Hypertext Markup Language 的缩写，即超文本标记语言：
 
-- 基于 JSX 语法糖实现
-- JUST THE UI：在多层架构的设计模式中，React 并不算 MVC 的架构，它可理解为 MVC 的 V 层。
-- VIRTUAL DOM：虚拟 DOM，是轻量的 js 对象，只保留了原生 dom 的一些常用的属性和方法。
-- DATA FLOW： React 是单向响应的数据流。
+都是 ML 结尾，共同点就是都是标记语言。
+-HTML，超文本标记语言，是语法较为松散的、不严格的 Web 语言；
+-XML，可扩展标记语言，主要用于存储数据和结构[参考]-(http://w3school.com.cn/xml/xml_intro.asp)；
+-XHTML，可扩展超文本标记语言，基于 XML，作用与 HTML 类似，但语法更严格参考。
 
 # 技术点
 
