@@ -25,13 +25,57 @@ _**都是 ML 结尾，共同点就是都是标记语言。**_
 
 - 特点：
 - （1）宽高由内容决定，不能设置宽高
-- （2）宽高由内容决定，不能设置宽高
-- （3）行内元素也遵循盒模型，但是设置上下的内外框无效
+- （2）行内元素也遵循盒模型，但是设置上下的内外框无效
 - 应用：行内元素如何实现在容器的水平居中； 给其父容器添加 `text-align；center；`
 - 总结：加粗、倾斜、a、span、img、input、textarea
 - 如何实现元素在容器的垂直方向上居中
 - 1.设置一把尺子 `width,height = 父容器的高度`
 - 2.该元素与尺子 `display:inline-block; vertical-align:middle`
+
+```html
+<style type="text/css">
+  .parent {
+    width: 1000px;
+    height: 300px;
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  .parent .child {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: orange;
+    vertical-align: middle;
+  }
+
+  .parent .rule {
+    display: inline-block;
+    width: 0;
+    height: 300px;
+    vertical-align: middle;
+  }
+</style>
+
+<body>
+  <div class="parent">
+    <div class="child"></div>
+    <div class="rule"></div>
+  </div>
+</body>
+```
+
+**二、元素类型的转换 display**
+
+1.inline 转换为行内元素
+2.block 转换为块级元素
+3.list-item 转换成列表项（li）
+4.inline-block 转换成行内块级元素
+_（1）一行显示多个 （2）可以设置宽高_
+5.none 隐藏元素，不占位置 6.
+A.大部分块元素 display 属性值默认为`block`，其中列表 li 的默认值为 list-item。
+B. 大部分内联元素的 display 属性值默认为`inline`，其中 img,inoput,textarea 默认为 inline-block。
 
 ```html
 This is a regular paragraph.
