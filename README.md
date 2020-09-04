@@ -23,14 +23,15 @@ _**都是 ML 结尾，共同点就是都是标记语言。**_
 
 **（二）行内元素**
 
-- 特点：（1）宽高由内容决定，不能设置宽高
-  （2）宽高由内容决定，不能设置宽高
-  （3）行内元素也遵循盒模型，但是设置上下的内外框无效
-- 应用：行内元素如何实现在容器的水平居中； 给其父容器添加 text-align；center；
-  总结：加粗、倾斜、a、span、img、input、textarea
+- 特点：
+- （1）宽高由内容决定，不能设置宽高
+- （2）宽高由内容决定，不能设置宽高
+- （3）行内元素也遵循盒模型，但是设置上下的内外框无效
+- 应用：行内元素如何实现在容器的水平居中； 给其父容器添加 `text-align；center；`
+- 总结：加粗、倾斜、a、span、img、input、textarea
 - 如何实现元素在容器的垂直方向上居中
-  _1.设置一把尺子_ width,height = 父容器的高度
-  _2.该元素与尺子_ display:inline-block; vertical-align:middle
+- 1.设置一把尺子 `width,height = 父容器的高度`
+- 2.该元素与尺子 `display:inline-block; vertical-align:middle`
 
 ```html
 This is a regular paragraph.
