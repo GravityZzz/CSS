@@ -22,8 +22,6 @@
     }
   },
   "lint-staged": {
-    "**/*.less": "stylelint --fix --syntax less",
-    "**/*.{js,jsx,ts,tsx}": "eslint --fix",
     "**/*.{js,jsx,tsx,ts,less,md,json}": "prettier --write"
   },
   "browserslist": [
