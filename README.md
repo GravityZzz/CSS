@@ -407,23 +407,24 @@ _触发条件：_
 相当于一个方框，在字段集中可包含文本和其他元素。  
 该元素用于对表单中的元素进行分组并在文档中区别标出文本，fieldset 可以设置嵌套，disable 可以定义空间禁止使用。
 
-**fieldset > Legend**
+**fieldset > Legend**  
 字段集标题(必须作为表单字段集的第一个元素，align 控制位置)
 
-**label 提示信息标签**
+**label 提示信息标签**  
 [for]关联到 id 名所在的表单元素  
 若用于单选框或多选框，一般都是直接将文字及表单元素包含在 label 里面
 
-**type 属性**  
-常用类型与 H5 新增的类型  
-1.color 拾色器  
-2.e-mail 邮箱（正则验证）  
-3.number 数字  
-4.tel 电话号码  
-5.url 网址（正则验证）  
-6.search 搜索  
-7.range 特定范围的数值选择器，min、max、value 当前值、step  
-8.date、month、week、time、datetime、datetime-local--时间
+**type 属性**
+
+- 常用类型与 H5 新增的类型  
+  1.color 拾色器  
+  2.e-mail 邮箱（正则验证）  
+  3.number 数字  
+  4.tel 电话号码  
+  5.url 网址（正则验证）  
+  6.search 搜索  
+  7.range 特定范围的数值选择器，min、max、value 当前值、step  
+  8.date、month、week、time、datetime、datetime-local--时间
 
 **html 属性**  
 1.autofocus 自动聚焦  
@@ -470,6 +471,8 @@ _触发条件：_
   </form>
 </fieldset>
 ```
+
+![Alt text](https://github.com/GravityZzz/CSS/blob/master/src/Images/fieldset.png "事例")
 
 ```html
 <img src="./src/images/fieldset.png" />
