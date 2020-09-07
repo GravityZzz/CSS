@@ -68,13 +68,14 @@ _**都是 ML 结尾，共同点就是都是标记语言。**_
 
 **二、元素类型的转换 display**
 
-1.inline 转换为行内元素
-2.block 转换为块级元素
-3.list-item 转换成列表项（li）
-4.inline-block 转换成行内块级元素
-_（1）一行显示多个 （2）可以设置宽高_
-5.none 隐藏元素，不占位置 6.
-A.大部分块元素 display 属性值默认为`block`，其中列表 li 的默认值为 list-item。
+1.inline 转换为行内元素  
+2.block 转换为块级元素  
+3.list-item 转换成列表项（li）  
+4.inline-block 转换成行内块级元素  
+_（1）一行显示多个 （2）可以设置宽高_  
+5.none 隐藏元素，不占位置  
+6.  
+A.大部分块元素 display 属性值默认为`block`，其中列表 li 的默认值为 list-item。  
 B. 大部分内联元素的 display 属性值默认为`inline`，其中 img,inoput,textarea 默认为 inline-block。
 
 ```html
@@ -88,6 +89,8 @@ This is a regular paragraph.
 
 This is another regular paragraph.
 ```
+
+###
 
 # 技术点
 
