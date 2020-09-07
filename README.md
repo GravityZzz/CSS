@@ -416,15 +416,15 @@ _触发条件：_
 
 **type 属性**
 
-- 常用类型与 H5 新增的类型  
-  1.color 拾色器  
-  2.e-mail 邮箱(正则验证)  
-  3.number 数字  
-  4.tel 电话号码  
-  5.url 网址(正则验证)  
-  6.search 搜索  
-  7.range 特定范围的数值选择器，min、max、value 当前值、step  
-  8.date、month、week、time、datetime、datetime-local--时间
+常用类型与 H5 新增的类型  
+1.color 拾色器  
+2.e-mail 邮箱(正则验证)  
+3.number 数字  
+4.tel 电话号码  
+5.url 网址(正则验证)  
+6.search 搜索  
+7.range 特定范围的数值选择器，min、max、value 当前值、step  
+8.date、month、week、time、datetime、datetime-local--时间
 
 **html 属性**  
 1.autofocus 自动聚焦  
@@ -501,8 +501,7 @@ input[type='number']::-webkit-inner-spin-button {
 6.article 文章、独立的内容块。可以嵌套自己  
 7.section 章节、区块，专题性的内容  
 8.aside 侧边栏，非正文的内容
-
-- 9.figure 对图片跟文字进行组合>figcaption 对 figure 的内容进行说明
+9.figure 对图片跟文字进行组合>figcaption 对 figure 的内容进行说明
 
 ```html
 <figure>
