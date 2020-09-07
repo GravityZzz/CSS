@@ -368,7 +368,7 @@ IE8 以下支持 cursor:hand;
 
 ## 7.BFC
 
-> BFC(Block format content)块级格式化上下文,它是一个独立的渲染区域，只有 block-level box（块）参与，  
+> BFC(Block format content)块级格式化上下文,它是一个独立的渲染区域，只有 block-level box(块)参与，  
 > 它规定了内部的块如何布局，并且与区域外部毫不相干。
 
 - 1.内部的 box 会在垂直方向，一个接一个地放置
@@ -418,10 +418,10 @@ _触发条件：_
 
 - 常用类型与 H5 新增的类型  
   1.color 拾色器  
-  2.e-mail 邮箱（正则验证）  
+  2.e-mail 邮箱(正则验证)  
   3.number 数字  
   4.tel 电话号码  
-  5.url 网址（正则验证）  
+  5.url 网址(正则验证)  
   6.search 搜索  
   7.range 特定范围的数值选择器，min、max、value 当前值、step  
   8.date、month、week、time、datetime、datetime-local--时间
@@ -474,10 +474,6 @@ _触发条件：_
 
 ![Alt text](https://github.com/GravityZzz/CSS/blob/master/src/Images/fieldset.png "事例")
 
-```html
-<img src="./src/images/fieldset.png" />
-```
-
 ```less
 // 上传文件
 input[type="file"] [multiple多选]
@@ -496,6 +492,76 @@ input[type='number']::-webkit-inner-spin-button {
 ## 10.H5 增加的新特性
 
 > 增加了新特性：语义特性，本地存储特性，设备兼容性，链接特性，网页多媒体特性，三维，图形及特效特性，性能与集成特性，css3 特性。
+
+1.header 头部标签，一般都是包含标题标签或者导航条 (header,foot 不互相嵌套)  
+2.hgroup 对标题进行组合  
+3.footer 一般都是版权信息、作者简介  
+4.nav 导航条，对于屏幕阅读器等设备支持更好  
+5.main 主要内容，一个页面就用一次，外层结构  
+6.article 文章、独立的内容块。可以嵌套自己  
+7.section 章节、区块，专题性的内容  
+8.aside 侧边栏，非正文的内容
+
+- 9.figure 对图片跟文字进行组合>figcaption 对 figure 的内容进行说明
+
+```html
+<figure>
+  <img src="../images/39.gif" height="254" width="196" alt="" />
+  <figcaption>这是一个赵本山的图片</figcaption>
+</figure>
+```
+
+10.time 具体时间标签
+
+```html
+<p>我一般都是<time>6:00</time>起床！</p>
+<p>我<time datetime="2018/01/01">今年春节</time>买了个表</p>
+```
+
+11.details 细节[open 默认显示细节]>summary 对细节的总结
+
+```html
+<details open>
+  <summary>静夜思 李白</summary>
+  <p>床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+</details>
+```
+
+12.mark 定义带有标号的文本，在需要突出显示文本时使用<mark>标签
+
+```html
+<p>
+  我<mark>看见</mark>他缓缓地<mark>离去</mark>，泪水<mark>浸湿</mark>了我的衣衫。
+</p>
+```
+
+13.progress[max 最大值][value当前值]定义进度条
+
+```html
+<progress max="200" value="100"><span>50</span>%</progress>
+```
+
+14.度量尺-不支持 IE 浏览器  
+[min 最小值][max最大值][low 较低的值][high较高的值][value 当前值]  
+[optimum 较佳的值，当取值小于较低的值说明越低越好，反之同理]
+
+```html
+<meter min="0" max="100" low="60" high="85" value="39" optimum="86" />
+```
+
+15.注释标签  
+ ruby 注释标签>rt 对内容的注释信息  
+ <ruby>禤<rt>xuan</rt></ruby>  
+16.video  
+支持格式：ogg、mp4、webM  
+(1)[controls]控制条  
+(2)[autoplay]自动播放  
+(3)[loop]循环播放  
+(4)[width][height]  
+(5)[muted] 值 muted 规定视频输出应该被静音  
+(6)[preload] preload  
+如果出现该属性，则音频在页面加载时进行加载，并预备播放。如果使用 "autoplay"，则忽略该属性。  
+(7)[poster]等待加载
 
 # 技术点
 
