@@ -231,23 +231,29 @@ a {
  经验：当父元素脱离了标准流，由子元素的宽度撑大父元素
 
 **(二)父元素的高度由子元素撑开**  
-1.高度塌陷：当子元素都浮动了，父元素会没有子元素撑开高度  
+1.高度塌陷：当子元素都浮动了，父元素会没有子元素撑开高度
 
-解决方法：
-（1）给父元素加 overflow:hidden；缺点：若存在内容溢出，会被裁掉
+解决方法：  
+（1）给父元素加 overflow:hidden；缺点：若存在内容溢出，会被裁掉  
 （2）给父元素添加最后一个元素（块级元素）
-height:0;
-clear:both;
-overflow:hidden;
-（3）伪元素清楚法：(一般我们用的时候，我们只需要把类名 .clearfix 添加到父元素上)
-.clearfix::after{
-height:0;
-content:"";
-display:block;
-clear:both;
-overflow:hidden;
-visibility:hidden;
+
+        height:0;
+        clear:both;
+        overflow:hidden;
+
+
+（3）伪元素清楚法：(把类名 .clearfix 添加到父元素上, 脱离标准版的元素同理)
+
+```less
+.clearfix::after {
+  height: 0;
+  content: "";
+  display: block;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
 }
+```
 
 2.最小高度: `min-height`  
  当内容高度小于最小高度，按最小高度显示；  
