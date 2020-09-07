@@ -551,7 +551,7 @@ input[type='number']::-webkit-inner-spin-button {
 15.注释标签  
  ruby 注释标签>rt 对内容的注释信息  
  <ruby>禤<rt>xuan</rt></ruby>  
-16.video  
+16.video、audio  
 支持格式：ogg、mp4、webM  
 (1)[controls]控制条  
 (2)[autoplay]自动播放  
@@ -561,6 +561,67 @@ input[type='number']::-webkit-inner-spin-button {
 (6)[preload] preload  
 如果出现该属性，则音频在页面加载时进行加载，并预备播放。如果使用 "autoplay"，则忽略该属性。  
 (7)[poster]等待加载
+
+## 11.选择器
+
+（一）基本选择器  
+ 1.标签（元素）选择器：通过标签名获取元素  
+ 2.类选择器：通过.类名获取元素  
+ 3.id 选择器：通过#id 名获取元素  
+ 4.通配符选择器：通过\*获取到页面中所有元素  
+ 5.群组选择器 E1，E2：通过逗号获取到多个选择器  
+（二）层次选择器  
+ 1.后代选择器 E1 E2：表示获取到的 E2 元素是 E1 元素的后代  
+ 2.子代选择器 E1>E2：表示获取到的 E2 元素是 E1 元素的子代  
+ 3.相邻兄弟选择器 E1+E2：表示获取的 E2 元素，紧跟 E1 元素的后面  
+ 4.兄弟选择器 E1~E2：表示获取 E1 后面的所有 E2 元素  
+（三）动态伪类选择器  
+ 1.`:link` 锚链接被访问前添加的样式  
+ 2.`:visiter` 锚链接被访问后添加的样式  
+ 3.`:hover` 鼠标悬停在任一元素上的添加的样式  
+ 4.`:active` 鼠标点击任一元素时添加的样式  
+ 5.`:focus` 表单元素被聚焦时添加的样式  
+（四）目标伪类选择器  
+ E：`target` 获取 E 元素里面被作为当前目标的元素  
+（五）ui 状态伪类选择器  
+ 1.`:enabled` 可用的表单元素添加样式  
+ 2.`:disabled` 可用的表单元素添加样式  
+ 3.`:checked` 选中的表单选框添加样式  
+（六）结构伪类选择器  
+ 1.E:first-child 获取到父元素的第一个子元素，且要满足 E 元素  
+ 2.E:last-child 获取到父元素的最后一个子元素，且要满足 E 元素  
+ 3.E:nth-child(n) 获取到其父元素的第 n 个子元素，且满足 E 元素  
+ 从 1 开始计数。  
+ 4.E:nth-last-child(n) 获取到其父元素的倒数第 n 个子元素,且满足 E 元素，从 1 开始计数。  
+​ n 的数值：具体数值  
+ odd(2n-1)第奇数个孩子 even(2n)第偶数个孩子 -n+a 获取到父元素第一个到第 a 个孩子  
+​ 5.E:first-of-type 获取到其父元素的第一个 E 类型的子元素  
+​ 6.E:last-of-type 获取到其父元素的最后一个 E 类型的子元素  
+​ 7.E:nath-of-type(n) 获取到其父元素的第 n 个 E 类型的子元素  
+​ 8.E:nath-last-of-type(n) 获取到其父元素的倒数第 n 个 E 类型的子元素  
+​ 9.E:empty 空文本元素添加样式，有空格不算空文本  
+​ 10.E:only-child{}获取到其父元素唯一的一个子元素  
+​ 11.E:only-of-type 获取到父元素的唯一一个 E 类型的孩子
+
+（七）否定伪类选择器  
+ F:not(E) 除了 E 元素以外的所有 F 元素  
+（八）语言伪类选择器  
+ q:lang(no){quotes:"""";}  
+​ q[lang="no"]在内容两侧会生成引号，若想改变符号，通过如上的语言伪类选择器
+
+（九）伪元素选择器  
+ 1.`E::before(content:"")`给 E 元素添加第一个子元素  
+ 2.`E::after(content:"")`给 E 元素添加最后一个子元素  
+ 3.`E::first-letter(content:"")`第一个文本  
+ 4.`E::first-list(content:"")`第一个行  
+ 5.`E::selection` E 元素的内容被选中时添加样式  
+ 兼容火狐：-moz-selection  
+（十）属性选择器  
+ 1.`E[attr]`拥有该 attr 属性的 E 元素被获取到  
+ 2.`E[attr="val"]`拥有该 attr 属性，且属性值等于 val 的值的 E 元素  
+ 3.`E[attr*="val"]`拥有该 attr 属性，且属性值包含 val 的值的 E 元素  
+ 4.`E[attr^="val"]`拥有该 attr 属性，且属性值以 val 值开头的 E 元素  
+ 5.`E[attr$="val"]`拥有该 attr 属性，且属性值以 val 值结尾的 E 元素
 
 # 技术点
 
