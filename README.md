@@ -373,7 +373,8 @@ IE8 以下支持 cursor:hand;
 
 **(12)禁止点击**  
  pointer events:none;  
- val: auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit  
+ val: auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit
+
 ===================================================================================
 
 ## 7.BFC
@@ -398,15 +399,17 @@ IE8 以下支持 cursor:hand;
   (清除浮动的第一种方式) 兄弟元素属于同一个 bfc 里面
 
 _触发条件：_
-`根元素html float属性不为none position为absolute(有定位的父元素或者html)fixed display为inline-block,table-cell,table-caption flex,inline-flex(css3),overflow不为visible(overflow:hidden;) `
+`根元素html float属性不为none position为absolute(有定位的父元素或者html)fixed display为inline-block, table-cell,table-caption flex, inline-flex(css3), overflow不为visible(overflow:hidden;) `
 
 自适应两栏布局  
- 方法一：
+ 方法一：  
 左边定宽加浮动,右边为`margin-left`留左边位置,左边浮动元素会脱离标准流，第二个占据位置第一个位置，  
  块级元素宽度为 100%，当设置 margin 后就自动调整。
 
-方法二：左边定宽加浮动，右边不定宽加`overflow:hidden`  
- 原理：BFC 区域不会与浮动块重叠。  
+方法二：
+左边定宽加浮动，右边不定宽加`overflow:hidden`  
+原理：BFC 区域不会与浮动块重叠。
+
 ===================================================================================
 
 ## 8.表单、表格
