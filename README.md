@@ -194,6 +194,94 @@ _rules:_
 }
 ```
 
+## 精灵门与滑动门
+
+**精灵图**  
+将导航背景图片、按钮背景图片等有规则合并成一张背景图片，即将多张图片合成一张整图，然后用 bg-posistion
+
+**滑动门**
+通过多张背景图片进行层叠，从而在视觉上达到同一张图片的效果
+
+```less
+a {
+  //padding-left 存放左边的背景图片
+}
+> span {
+  //padding-right 以实现文本居中
+}
+// case
+a {
+  height: 22px;
+  display: block;
+  text-align: center;
+  padding-left: 26px;
+  background: url("./src/images/carousel_1.jpg") no-repeat left top;
+
+  span {
+    display: block;
+    background: url("./src/images/carousel_2.jpg") no-repeat right top;
+  }
+}
+```
+
+## 4.宽高自适应
+
+**(一)宽度自适应**  
+ 当块级元素的宽度设置为 100%，或者不设置，宽度默认为占父元素的 100%  
+ 经验：当父元素脱离了标准流，由子元素的宽度撑大父元素
+
+**(二)父元素的高度由子元素撑开**  
+1.高度塌陷：当子元素都浮动了，父元素会没有子元素撑开高度  
+
+解决方法：
+（1）给父元素加 overflow:hidden；缺点：若存在内容溢出，会被裁掉
+（2）给父元素添加最后一个元素（块级元素）
+height:0;
+clear:both;
+overflow:hidden;
+（3）伪元素清楚法：(一般我们用的时候，我们只需要把类名 .clearfix 添加到父元素上)
+.clearfix::after{
+height:0;
+content:"";
+display:block;
+clear:both;
+overflow:hidden;
+visibility:hidden;
+}
+
+2.最小高度: `min-height`  
+ 当内容高度小于最小高度，按最小高度显示；  
+ 当内容高度大于最小高度，按内容高度显示；
+
+    应用场景：内容不确定，内容前后相差较多时，无法较好控制父元素
+    兼容ie6：
+       ie中height代表的是最小高度。若想这个属性只让ie6识别，
+       通过过滤器:_height
+
+**(三)元素高度自适应窗口高度**
+
+```less
+html,
+body {
+  height: 100%;
+
+  .div {
+    height: 100%;
+  }
+}
+```
+
+## 5.伪元素
+
+元素类型默认为行内元素  
+ content:""不能省略  
+ content:url("");添加图片
+
+1.E：before 给 E 元素添加第一个子元素  
+ 2.E：after 给 E 元素添加最后一个子元素  
+ 3.E：first-letter 给 E 元素的第一个文本添加样式  
+ 4.E：first-line 给 E 元素的第一行文本添加样式
+
 # 技术点
 
 - [JSX 语法](https://github.com/wscats/react-tutorial/tree/master/react/jsx)
