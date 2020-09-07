@@ -12,7 +12,7 @@ _**都是 ML 结尾，共同点就是都是标记语言。**_
 
 **一、元素类型**
 
-**（一）块级元素**
+**(一)块级元素**
 
 - 特点：
   (1)占据一整行。即使设置宽度，右边多余的部分也会用 margin 进行填充
@@ -23,11 +23,11 @@ _**都是 ML 结尾，共同点就是都是标记语言。**_
   `margin:0 auto`
   总结：body、h1-h6、p、列表 ul>li ol>li dl>dt>dd
 
-**（二）行内元素**
+**(二)行内元素**
 
 - 特点：
-  （1）宽高由内容决定，不能设置宽高  
-  （2）行内元素也遵循盒模型，但是设置上下的内外框无效  
+  (1)宽高由内容决定，不能设置宽高  
+  (2)行内元素也遵循盒模型，但是设置上下的内外框无效  
    应用：行内元素如何实现在容器的水平居中； 给其父容器添加 `text-align；center；`  
    总结：加粗、倾斜、a、span、img、input、textarea  
    如何实现元素在容器的垂直方向上居中  
@@ -71,9 +71,9 @@ _**都是 ML 结尾，共同点就是都是标记语言。**_
 **二、元素类型的转换 display**
 1.inline 转换为行内元素
 2.block 转换为块级元素
-3.list-item 转换成列表项（li）
+3.list-item 转换成列表项(li)
 4.inline-block 转换成行内块级元素
-_（1）一行显示多个 （2）可以设置宽高_
+_(1)一行显示多个 (2)可以设置宽高_
 5.none 隐藏元素，不占位置 6.
 A.大部分块元素 display 属性值默认为`block`，其中列表 li 的默认值为 list-item。
 B. 大部分内联元素的 display 属性值默认为`inline`，其中 img,inoput,textarea 默认为 inline-block。
@@ -92,7 +92,7 @@ This is another regular paragraph.
 
 ===================================================================================
 
-## 定位与锚点
+## 2.定位与锚点
 
 **(一)定位 position**
 
@@ -107,7 +107,7 @@ _rules:_
 2.`position:relative;` 相对定位  
  ​ (1)相对于自己本身所在的位置进行移动定位  
  ​ (2)配合上下左右进行移动定位。相对于自己的某条边的元素中心  
- ​ (3)相对定位的元素不脱离标准流。（灵魂出窍）
+ ​ (3)相对定位的元素不脱离标准流。(灵魂出窍)
 
 3.`position absolute;` 绝对定位  
  ​ (1)绝对定位的元素是相对于 html 或者最近的有定位的父元素  
@@ -120,7 +120,7 @@ _rules:_
  ​ (3)脱离标准流
 
 ```html
-<!--如何实现元素在容器中居中？ ​ 子绝父相（父元素可以是其他定位） ​ 子元素-->
+<!--如何实现元素在容器中居中？ ​ 子绝父相(父元素可以是其他定位) ​ 子元素-->
 <!--top:50%;margin-top:负自己高度的一半；-->
 <!--left:50%;margin-left:负自己宽度的一半-->
 
@@ -146,16 +146,16 @@ _rules:_
 }
 ```
 
-**（二）层级 z-index**  
+**(二)层级 z-index**  
 ​ 1.定位 > 浮动 > 浮动 > 标准流  
 ​ 2.`z-index` 只能用于有定位的元素上  
 ​ 3.`z-indent` 可以取负数，没有单位
 
-**（三）命名锚点**  
+**(三)命名锚点**  
 ​ a[href="#id 名"]跳转到 id 名所在的元素上  
 ​ a[href="页面路径#id 名"]跳转到其他页面该 id 名所在的元素上
 
-**（四）overflow 内容溢出容器时的处理方式**  
+**(四)overflow 内容溢出容器时的处理方式**  
 ​ **属性值：**  
  `visible` 默认可见 `hidden` 隐藏  
 ​ `scroll` 滚动条 `auto` 判断需要出现滚动条才会出现  
@@ -195,7 +195,9 @@ _rules:_
 }
 ```
 
-## 精灵门与滑动门
+===================================================================================
+
+## 3.精灵门与滑动门
 
 **精灵图**  
 将导航背景图片、按钮背景图片等有规则合并成一张背景图片,即将多张图片合成一张整图,使用 background-position
@@ -225,6 +227,8 @@ a {
 }
 ```
 
+===================================================================================
+
 ## 4.宽高自适应
 
 **(一)宽度自适应**  
@@ -236,16 +240,18 @@ a {
 
 解决方法：
 
-> （1）给父元素加 overflow:hidden；缺点：若存在内容溢出，会被裁掉  
-> （2）给父元素添加最后一个元素（块级元素）
-
-    height:0;
-    clear:both;
-    overflow:hidden;
-
-> （3）伪元素清楚法：(把类名 .clearfix 添加到父元素上, 脱离标准版的元素同理)
+> (1)给父元素加 overflow:hidden；缺点：若存在内容溢出，会被裁掉  
+> (2)给父元素添加最后一个元素(块级元素)
+> (3)伪元素清除法：(把类名 .clearfix 添加到父元素上, 脱离标准版的元素同理)
 
 ```less
+// 2.给父元素添加块级元素
+.div {
+  height: 0;
+  clear: both;
+  overflow: hidden;
+}
+// 3.伪元素清除法
 .clearfix::after {
   height: 0;
   content: "";
@@ -278,6 +284,8 @@ body {
 }
 ```
 
+===================================================================================
+
 ## 5.伪元素
 
 元素类型默认为行内元素  
@@ -285,11 +293,208 @@ body {
  content:url("");添加图片
 
 1.E：before 给 E 元素添加第一个子元素  
- 2.E：after 给 E 元素添加最后一个子元素  
- 3.E：first-letter 给 E 元素的第一个文本添加样式  
- 4.E：first-line 给 E 元素的第一行文本添加样式
+2.E：after 给 E 元素添加最后一个子元素  
+3.E：first-letter 给 E 元素的第一个文本添加样式  
+4.E：first-line 给 E 元素的第一行文本添加样式  
+===================================================================================
 
-> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+## 6.兼容小细节
+
+**隐藏**  
+隐藏元素的两种方式  
+ 1.隐藏元素：不占位置 `display：none;`  
+ 2.可见性，隐藏元素，占位置 `visibility：hidden;`
+
+**(2)图片间隙问题**  
+div>img,img 下方会存在间隙
+
+    解决方法：
+    *img{display:none}
+    *img{font-size:0;}
+
+**(3)双倍浮动问题**  
+ie6 以下版本，会错误地将浮动元素浮向边 margin 加倍显示
+
+    解决方法：
+    {display:inline;}
+
+**(4)默认高度**  
+IE7 以下版本 存在默认高度为 16px
+
+    解决方法：
+    {font-size:0;}
+    {overflow:hidden;}
+
+**(5)表单元素行高**  
+表单元素行高不一致(基线对齐的问题)
+
+    解决方法：
+    *{vertical-align:middle;}
+    *{float:left;}
+
+**(6)表单元素元素样式**  
+表单元素元素样式在各流浪器渲染效果不一
+
+    解决方法：
+    给input清除默认样式
+    {display:block; border:0; none; padding:0;}
+    给input外层嵌套标签，设置input需要的样式。
+
+**(7)百分比 bug**  
+浮动元素`50% + 50%>100%` (IE6 以下的版本)
+
+    解决办法：
+    若两个元素都在左浮动，给元素添加clear::right
+
+**(8)鼠标指针 bug**  
+IE8 以下支持 cursor:hand;
+
+    解决办法：
+    {cursor:pointer} // 手势为手指
+
+**(9)透明属性**  
+ _ opacity:val;val 取值为 0-1；越大越不透明 (高等浏览器)  
+ _ filter:alpha(opacity=val)  
+ \* filter:alpha(opacity=100)  
+ val 取值为 0-100,整十数，越大越不透明。(IE8)
+
+**(10)margin 塌陷**  
+ 父元素与第一个子元素存在上间距，若给第一个子元素 margin-top，会错误地渲染成父元素的 margin-top。
+
+    解决方法：
+    (1)子元素或者父元素浮动
+    (2)给父元素加overflow:hidden
+    (3)给父元素加border-top
+    (4)将子元素的margin-top当作父元素的padding-top
+
+**(11)margin 合并**  
+ 当两个块级元素竖直排列时，  
+ 上一个元素的 margin-bottom 与下一个元素的 margin-top 会发生合并，它们之间的 margin 取两者之间较大的值。
+
+**(12)禁止点击**  
+ pointer events:none;  
+ val: auto | none | visiblePainted | visibleFill | visibleStroke | visible | painted | fill | stroke | all | inherit  
+===================================================================================
+
+## 7.BFC
+
+> BFC(Block format content)块级格式化上下文,它是一个独立的渲染区域，只有 block-level box（块）参与，  
+> 它规定了内部的块如何布局，并且与区域外部毫不相干。
+
+- 1.内部的 box 会在垂直方向，一个接一个地放置
+
+- 2.Box 垂直方向的距离由 margin 决定。属于同一个 bfc 的两个相邻块发生 margin 重叠
+
+- 3.每个元素的 Margin box 的左边，与包含块 border box 的左边相接触  
+  盒模型=content+padding+margin+border。  
+  width 指的是 content 的宽，height 是 content 的高
+
+- 4.bfc 的区域不会与 float box 重叠(应用场景：清除浮动的第二种方式、自适应两栏布局)
+
+- 5.BFC 就是页面上的一个隔离的独立容器，不影响外部的元素  
+  (应用场景：防止 margin 合并，对独立的 bfc 里面的 子元素操作不会影响到外部元素)
+
+- 6.计算 bfc 高度时，里面的浮动元素也参与计算  
+  (清除浮动的第一种方式) 兄弟元素属于同一个 bfc 里面
+
+_触发条件：_
+`根元素html float属性不为none position为absolute(有定位的父元素或者html)fixed display为inline-block,table-cell,table-caption flex,inline-flex(css3),overflow不为visible(overflow:hidden;) `
+
+自适应两栏布局  
+ 方法一：
+左边定宽加浮动,右边为`margin-left`留左边位置,左边浮动元素会脱离标准流，第二个占据位置第一个位置，  
+ 块级元素宽度为 100%，当设置 margin 后就自动调整。
+
+方法二：左边定宽加浮动，右边不定宽加`overflow:hidden`  
+ 原理：BFC 区域不会与浮动块重叠。  
+===================================================================================
+
+## 8.表单、表格
+
+### 表单
+
+**fieldset**  
+相当于一个方框，在字段集中可包含文本和其他元素。  
+该元素用于对表单中的元素进行分组并在文档中区别标出文本，fieldset 可以设置嵌套，disable 可以定义空间禁止使用。
+
+**fieldset > Legend**
+字段集标题(必须作为表单字段集的第一个元素，align 控制位置)
+
+**label 提示信息标签**
+[for]关联到 id 名所在的表单元素  
+若用于单选框或多选框，一般都是直接将文字及表单元素包含在 label 里面
+
+**type 属性**  
+常用类型与 H5 新增的类型  
+1.color 拾色器  
+2.e-mail 邮箱（正则验证）  
+3.number 数字  
+4.tel 电话号码  
+5.url 网址（正则验证）  
+6.search 搜索  
+7.range 特定范围的数值选择器，min、max、value 当前值、step  
+8.date、month、week、time、datetime、datetime-local--时间
+
+**html 属性**  
+1.autofocus 自动聚焦  
+2.placeholder 占位符  
+3.required 必填项  
+4.pattern 正则
+
+```html
+<fieldset class="f1">
+  <h2>已注册用户登录</h2>
+  <fieldset class="f2">
+    <legend class="la"><span>用户登录</span></legend>
+    <form action="#" method="get" id="form1">
+      <div class="dv1">
+        <label for="user" class="x1">用户名:</label>
+        <input type="text" id="user" /> <br />
+      </div>
+      <label for="mima" class="x2">密码：</label>
+      <input type="password" id="mima" /> <br />
+      <div class="dv2">
+        <input type="checkbox" id="a1" />记住我
+        <input type="submit" value="登录" id="submit" /><br />
+      </div>
+      <p>您忘记密码？</p>
+    </form>
+  </fieldset>
+  <h2>未注册创建账号</h2>
+  <form action="#" method="get" id="form2">
+    <fieldset class="f3">
+      <legend class="la"><span>用户注册</span></legend>
+      <p>您的电子邮箱不会被公布出去</p>
+      <label for="user1">用户名:</label>
+      <input type="text" id="user1" /><span>*(最多30个字符)</span><br />
+      <label for="email">电子邮箱:</label>
+      <input type="text" id="email" /> <span>*</span> <br />
+      <label for="mima2">密码:</label>
+      <input type="text" id="mima2" /><span>*</span><br />
+      <label for="remima">重复密码:</label>
+      <input type="text" id="remima" /><span>*(最多15字符)</span><br />
+      <input type="submit" id="submit1" />
+      <input type="reset" id="reset1" /><br />
+      <p>*注意事项</p>
+    </fieldset>
+  </form>
+</fieldset>
+```
+
+```less
+// 上传文件
+input[type="file"] [multiple多选]
+// 图片上传
+input[type="images"][scr图片路径]
+
+/*移除input[number]的上下箭头*/
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  -moz-appearance: textfield;
+  margin: 0;
+}
+```
 
 # 技术点
 
@@ -302,10 +507,10 @@ body {
 - [表单](https://github.com/wscats/react-tutorial/tree/master/react/component/src/form)
 - [组件通信](https://github.com/wscats/react-tutorial/tree/master/react/component/src/communication)
 - [生命周期](https://github.com/wscats/react-tutorial/tree/master/react/component/src/lifecycle)
-- [模块化（webpack）](https://github.com/wscats/react-tutorial/tree/master/react/webpack)
-- [脚手架（create-react-app）](https://github.com/wscats/react-tutorial/tree/master/react/create-react-app)
-- [调试工具（react-dev-tool）](https://github.com/wscats/react-tutorial/tree/master/react/react-devtool)
-- [路由（3.0）](https://github.com/wscats/react-tutorial/tree/master/react/router)[和（4.0）](https://github.com/wscats/react-tutorial/tree/master/react/router4)
+- [模块化(webpack)](https://github.com/wscats/react-tutorial/tree/master/react/webpack)
+- [脚手架(create-react-app)](https://github.com/wscats/react-tutorial/tree/master/react/create-react-app)
+- [调试工具(react-dev-tool)](https://github.com/wscats/react-tutorial/tree/master/react/react-devtool)
+- [路由(3.0)](https://github.com/wscats/react-tutorial/tree/master/react/router)[和(4.0)](https://github.com/wscats/react-tutorial/tree/master/react/router4)
 - Redux
   - [Redux 简介和简单实现](https://github.com/wscats/react-tutorial/tree/master/react/redux)
   - [Redux 跨组件通信之入门篇 —— combineReducers](https://github.com/wscats/react-tutorial/tree/master/react/redux/combineReducers)
