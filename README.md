@@ -291,6 +291,13 @@ body {
 
 ## 6.兼容小细节
 
+**盒模型**
+盒模型：content、padding、margin、border  
+1.标准盒模型：width、height 指的是 content 的宽高  
+2.怪异盒模型：width、height 指的是 content+padding+border 的宽高  
+ `box-sizing: attr⬇️` 规定盒模型  
+ content-box 设置普通盒模型 border-box 设置成怪异盒模型
+
 **隐藏**  
 隐藏元素的两种方式  
  1.隐藏元素：不占位置 `display：none;`  
@@ -629,6 +636,438 @@ input[type='number']::-webkit-inner-spin-button {
  3.`E[attr*="val"]`拥有该 attr 属性，且属性值包含 val 的值的 E 元素  
  4.`E[attr^="val"]`拥有该 attr 属性，且属性值以 val 值开头的 E 元素  
  5.`E[attr$="val"]`拥有该 attr 属性，且属性值以 val 值结尾的 E 元素
+
+## 12.文本和背景图
+
+**(一)文本属性**
+
+1.  文本阴影 `text-shadow: attr ⬇️ `  
+    x-offset 水平偏移，右正左负  
+    ​y-offset 垂直偏移，下正上负  
+    ​blur 模糊区域，不能取负值
+2.  文本溢出 `text-overflow: attr ⬇️`  
+    属性值 clip-默认不处理 ellipsis- 省略号
+
+3.  单词间距 `word-spacing: attr ⬇️`  
+    数值 px
+
+4.  单词换行 `word-break: attr ⬇️`  
+    break-all 任意字符间断行  
+    keep-all 文本不断行  
+    break-word 单词换行
+5.  文本换行 `white-space: attr ⬇️`
+
+    |                | 换行符 | 空格和制表符 | 文字换行 | 行尾空格 |
+    | :------------- | :----- | :----------- | :------- | -------- |
+    | `normal`       | 合并   | 合并         | 换行     | 删除     |
+    | `nowrap`       | 合并   | 合并         | 不换行   | 删除     |
+    | `pre`          | 保留   | 保留         | 不换行   | 保留     |
+    | `pre-wrap`     | 保留   | 保留         | 换行     | 挂起     |
+    | `pre-line`     | 保留   | 合并         | 换行     | 删除     |
+    | `break-spaces` | 保留   | 保留         | 换行     | 换行     |
+
+6.  自定义字体
+
+```css
+/* 字体图标：矢量图(可以理解成文本，字)，放大缩小不会模糊。*/
+@font-face {
+  font-family: "SFMono-Regular";
+  src: url("./src/images");
+}
+```
+
+7.  颜色  
+    rgba(red0-255,green0-255,blue0-255,alpha 不透明度)
+    hsla(色调 0-360，饱和度 0-100%，亮度 0-100%，alpha0-1)
+    transparent 完全透明（三角形）
+
+> 省略文本
+
+```css
+/*只显示一行，超出部分用省略号*/
+.line {
+  width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 只显示两行(或多行)，超出部分用省略号*/
+.multiple {
+  width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+```
+
+​
+**(二)背景属性**
+
+1.  `background-size: attr ⬇️` 背景图片的尺寸  
+    ​ `cover` 背景图片完全覆盖容器(绝大部分情况会出现背景图丢失一部分)  
+    ​ `contain` 容器完全包含背景图片(绝大部分容器留白现象)
+
+            *应用：一般轮播图采用背景图片
+            background-size:cover;
+            background-position:center center;
+            background-position 背景图片在容器的定位区域中的位置
+
+2.  `background-origin: attr ⬇️` 背景图片的定位区域  
+    默认从 padding 开始摆放 padding-box  
+    `content` content-box(此时的 background-position：0 0 是在内容的左上角)
+    `border-box` 开始
+
+3.  `background-clip: attr ⬇️`背景图片的裁剪(最终显示区域)
+    `border-box` 从边框部分开始裁剪  
+    `padding-box` 从 padding 部分开始裁剪  
+    `content-box` 从 content 部分开始裁剪  
+
+
+## 边框与渐变
+
+**(一)边框属性**
+
+1.  `box-shadow: x-offset,y-offset,blur,spread,color，inset ⬇️` 边框阴影  
+     x-offset 水平偏移 往右为正  
+    ​ y-offset 垂直偏移 往下为正  
+    ​ blur 模糊区域  
+    ​ spread 扩展区域  
+    ​ color 颜色  
+    ​ inset 往元素内部移动。若是不设置，往元素外部添加阴影边框
+
+```css
+/*兼容写法*/
+.box {
+  -webkit-appearance: none;
+  box-shadow: 0 20px 44px 0 rgba(79, 11, 11, 0.5);
+  -webkit-box-shadow: 0 20px 44px 0 rgba(79, 11, 11, 0.5);
+}
+```
+
+2.  `border-image: attr ⬇️` 边框图片  
+     边框图片引入`border-image-source:(url)`  
+     边框图片的宽度 `border-image-width` 若省略该值，默认就是边框宽度
+    ​ 边框图片的重复 `border-image-repeat: attr ⬇️`  
+    ​ stretch 默认拉伸 repeat 重复 round 压缩重复  
+    ​ 边框图片向外延伸 border-image-outset 不能取负数  
+     边框圆角 `border-radius :水平半径/垂直半径;`  
+    ​ 水平或者垂直半径遵循（从左上角开始）顺时针原则，缺省的值找对角
+
+```css
+/*边框渐变*/
+.box {
+  border: 1px transparent solid;
+  border-image: linear-gradient(to right, #000718, #23b7cb) 1 10;
+}
+/*边框圆角*/
+.box {
+  border-radius: 4px 3px 6px 10px/ 2px 4px 10px 10px; // X坐标/Y坐标
+}
+```
+
+**(二)渐变**
+
+1. `linear-gradient: attr ⬇️` 线性渐变  
+    gradient(linear,起点坐标，终点坐标，from(color) to(color))  
+   ​ gradient(linear，起点坐标，垂直坐标，color-stop(渐变开始的位置))
+
+2. `radial-gradient: attr ⬇️` 径向界面  
+    1.radial-webkit-gradient(圆心，颜色 开始渐变的位置)  
+   ​ 2.radial-webkit-gradient(圆心，size||shape,颜色 开始渐变的位置）  
+   ​ `size大小 attr⬇️`  
+   ​ closest-side:最近边 farthest-side:最远边  
+   ​ closest-corner:最近角 farthest-corner:最远角（默认值）  
+   ​ `shape形状: attr⬇️`  
+   ​ ellipse 椭圆形（默认） circle 表示圆形
+3. ` repeating-radial-gradient: attr ⬇️`  
+    用法同上
+
+```css
+/*图片背景渐变*/
+.background {
+  background: -webkit-linear-gradient(
+    top,
+    #c43337,
+    #e34c4b,
+    #cf383b
+  ); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(
+    bottom,
+    #c43337,
+    #e34c4b,
+    #cf383b
+  ); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(
+    bottom,
+    #c43337,
+    #e34c4b,
+    #cf383b
+  ); /* Firefox 3.6 - 15 */
+  background: linear-gradient(
+    to bottom,
+    #c43337,
+    #e34c4b,
+    #cf383b
+  ); /* 标准的语法 */
+}
+```
+
+## 14.过渡与状态-2d
+
+> 渐进增加：保证低版本浏览器最基本的功能，再考虑高版本的一些的用户需求。  
+> 优雅降级：一开始构建完整的功能，然后再针对低版本浏览器进行兼容。
+
+**(一)transition 过渡**
+
+过渡: 让变化在一段时间内进行
+
+1.  `transition-property: attr`需要过渡的属性
+2.  `transition-duration: 200s`需要过渡的时间
+3.  `transition-timing-function: attr ⬇️ `需要过渡的形式
+
+    | 属性          | 描述             |
+    | ------------- | ---------------- |
+    | `linear`      | 匀速             |
+    | `ease`        | 慢速进入         |
+    | `ease-in`     | 慢速进入         |
+    | `ease-out`    | 慢速离开         |
+    | `ease-in-out` | 慢速进入慢速离开 |
+
+4.  `transition-delay: 0.2s`需要过渡的延迟
+
+> 总属性：1,2 必须写 transition:1 2 3 4(1 跟 2 不可以忽略)  
+> 多个属性同时过渡可以用 all
+
+**(二)transform 状态**
+
+1. 移动变换 transform:translate(水平方向（右正），垂直方向（下正）)  
+   ​ 改变某个方向 transform:translateX(水平方向) transform:translateY(垂直方向)  
+   ​ \*取值取百分比的话，指的是自己的宽高 transform:translate(-50%, -50%)
+
+​ 2. 缩放变换 transform:scale(x,y)
+​ *取值为缩放比(倍数)，基准点为元素中心
+​ *transform:scaleX(x) transform:scaleY(y)
+
+​ 3. 旋转变换 transform:rotate(deg)  
+ ​ \*顺时针旋转为正值，基准点在元素中心
+
+​ 4. 扭曲变换 transform:skew(x 轴，y 轴)
+​ x 轴逆时针为正值，y 轴顺时针为正值
+
+​ 5. 元素变换的基准点 transform-origin  
+ ​ 取值：数值 百分比 方位
+
+## 15.3d 动画
+
+**(一)3d 变换**
+
+1. `transform：translate3d(x,y,z);`移动变换  
+   `transform:translateZ(z);`其他方向同理
+2. `transform-style：attr ⬇️;`变换方式  
+   flat 平面(默认) preserve-3d 保持 3d 变换（父元素上）
+
+3. `perspective: 数值;`设置管擦的距离,景深(父元素上)
+
+4. `transform: attr ⬇️` 旋转变换  
+   transform:rotateX(deg) 安培左手定律，扑倒方向为正
+   transform 参考 transform 状态
+5. `transform-origin:left top;` 变换的原点
+   left,right,top,bottom
+
+6. `perspective-origin: -200px -200px;` 景深的远点  
+   数值
+
+**(二)关键帧动画**
+
+1. 通过@keyframes 指定动画序列：@keyframes name{}
+2. 通过百分比将动画序列分割成多个节点
+3. 在各节点中分别定义各属性
+4. 通过 animation 将动画应用于相应元素
+
+```less
+.box {
+  width: 200%;
+  overflow: hidden;
+  animation: move 4s infinite linear;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0px);
+  }
+  100% {
+    transform: translate(-1050px);
+  }
+}
+```
+
+**(三)animation 属性**
+
+1.  `animation-name: Gravity;` 动画名字
+2.  `animation-operation: 2s;` 动画播放时间
+3.  `animation-timing-function: linear;` 动画播放形式
+
+    | 属性          | 描述             |
+    | ------------- | ---------------- |
+    | `linear`      | 匀速             |
+    | `ease`        | 慢速进入         |
+    | `ease-in`     | 慢速进入         |
+    | `ease-out`    | 慢速离开         |
+    | `ease-in-out` | 慢速进入慢速离开 |
+
+4.  `animation-iteration-count: 2;` 动画播放的次数 infinite 循环播放
+
+5.  `animation-direction: ` 动画播放的方向
+
+    | 属性                | 描述         |
+    | ------------------- | ------------ |
+    | `normal`            | 正向播放     |
+    | `reverse`           | 慢速进入     |
+    | `alternate`         | 交替播放     |
+    | `alternate-reverse` | 反向交替播放 |
+
+7.`animation-fill-mode: backwards;` 动画完成后的状态  
+ forward-保持最后的状态
+
+     animation:1 2 3 4 5 6 7
+     *animation:change 6s steps(2)
+         step(n)、step(n，end)每一帧都分成n步，每一步都以前一步状态来填充时间段
+         step(n,start)每一帧都分成n步，每一步都以后一步状态来填充时间段
+
+8.`-webkit-animation-play-state:paused;` 动画播放状态  
+​ pause 规定动画已暂停 ​ running 规定动画正在播放
+
+- [7 个面](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/7-sidedRotation.html, "case")
+- [正方形选择](http://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/BoxRotation.html, "case")
+- [7 个面](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/7-sidedRotation.html, "case")
+- [7 个面](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/7-sidedRotation.html, "case")
+- [7 个面](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/7-sidedRotation.html, "case")
+
+## 16.弹性盒与布局
+
+**(一)设置在父元素上**
+
+1.  `display:flex;`将父元素设置成弹性盒  
+    里面的子元素会在主轴方向不换行摆放,侧轴方向的大小不设置会当前行被默认拉伸。  
+    主轴、侧轴方向可以改变,默认分别为水平和垂直,代表在父元素的摆放。
+
+2.  `flex-direction:alt ⬇;️` 设置主轴方向  
+    row 从左往右 row-reverse 从右往左  
+    column 从上到下 column-reverse 从下往上
+3.  `flex-wrap:alt ⬇;️` 设置子项目换行  
+     nowrap 默认不换行 wrap 换行  
+     wrap-reverse 换行反向 主轴水平时，上下反向，主轴垂直时，左右反向  
+
+4.  `flex-flow:flex-direction||flex-wrap`
+
+5.  `justify-content:alt ⬇;️` 设置子项目在主轴方向的对齐方式  
+     *flex-start 默认在主轴的起点位置靠奇摆放  
+     *flex-end 在主轴的终点位置靠奇摆放  
+     *center 在主轴的中间位置靠奇摆放  
+     *space-between 将主轴方向空白区域平分在子项目之间  
+     \*space-around 将主轴方向空白区域环绕在子项目之间  
+
+6.  `align-items:alt ⬇;️` 设置子项目在侧轴方向的对齐方式(当前行)  
+     *stretch 若不设置子项目在侧轴方向的大小，会被默认拉伸  
+     *flex-start 若设置子项目在侧轴的大小，会被默认摆放在侧轴起点位置  
+     *flex-end 摆放在侧轴的终点位置  
+     *center 摆放在侧轴的中间位置  
+     \*baseline 子项目以基线对齐  
+
+7.  `align-content:alt ⬇;️` 控制子项目在侧轴方向的对齐方式(换行)  
+     *flex-start 默认在主轴的起点位置靠奇摆放  
+     *flex-end 在主轴的终点位置靠奇摆放  
+     *center 在主轴的中间位置靠奇摆放  
+     *space-between 将主轴方向空白区域评分在子项目之间  
+     \*space-around 将主轴方向空白区域环绕在子项目之间
+
+**(二)设置在子元素上**
+
+1.  `flex: 数值;` 设置子项目在主轴方向的比份
+
+2.  `align-self: alt⬇️;` 设置单个子项目在（当前行）侧轴方向的对齐方式  
+     *stretch 若不设置子项目在侧轴方向的大小，会被默认拉伸  
+     *flex-start 若设置子项目在侧轴的大小，会被默认摆放在侧轴起点位置  
+     *flex-end 摆放在侧轴的终点位置  
+     *center 摆放在侧轴的中间位置  
+     \*baseline 子项目以基线对齐
+
+3.  `justify-self: alt⬇️;` 设置单个子项目在（当前行）主轴方向的对齐方式  
+     *stretch 若不设置子项目在侧轴方向的大小，会被默认拉伸  
+     *flex-start 若设置子项目在侧轴的大小，会被默认摆放在侧轴起点位置  
+     *flex-end 摆放在侧轴的终点位置  
+     *center 摆放在侧轴的中间位置  
+     \*baseline 子项目以基线对齐  
+
+4.  `order: 数值;` 设置子项目的显示顺序  
+     设置了 order 会放在没设置 order 子项目后面  
+     都设置了 order,数字越小越靠前  
+
+
+## 17.布局
+
+**(一)多列布局**
+
+1.  `column-width` 每列的最小宽度
+2.  `column-count` 最多的列数
+3.  `column-gap` 列间距
+4.  `column-rule` 列边框
+5.  `column-span: alt⬇️;` 跨列  
+    none 不跨列 all 横跨所有列
+
+**(二)媒体查询**
+
+布局视口 viewpoint:比实际屏幕尺寸大很多，保证页面完整显示，但是全局缩小后的页面。  
+理想视口 viewpoint:meta 标签实现(meta:vp)（移动端一定要加这个）
+
+width 控制 viewpoint 的宽度，可以是固定值，也可以是 device-width 设备宽度  
+user-scalable:用户是否可以缩放  
+initial-scale 控制初始化缩放比例，1.0 表示不可以缩放  
+maximum-scale 最大缩放比例  
+minimum-scale 最小缩放比例
+
+媒体查询
+1.@media screen and (条件){CSS 样式}
+@media screen and(min-width:768px){
+2.min-width 当页面宽度大于最小宽度，生效（从小写到大）
+max-width 当页面宽度大于最小宽度，生效（从大写到小）
+min_device-width [设备宽度] 设备改变宽度才生效
+3.link[media="screen and (条件)"][href]
+
+**(三)响应式布局**
+
+1.  自适应布局
+    元素的宽高自适应窗口或者子元素的大小，从而实现同一套页面适应  
+    不同的窗口、分辨率以及设备。
+2.  响应式布局（一般用在比较简单界面）
+    相应不同的屏幕带下或者设备大小，对同一套页面的部分布局进行修改  
+    但是大体上一致。一般用在比较简单界面。
+
+```less
+/*多栏布局*/
+.box {
+  column-width: 300px;
+  column-count: 4;
+  column-gap: 10px;
+  column-rule: 2px solid #ccc;
+
+  h2 {
+    column-span: all;
+    text-align: center;
+  }
+}
+
+/*媒体查询*/
+@media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 992px) {
+}
+@media screen and (max-width: 768px) {
+}
+```
 
 # 技术点
 
