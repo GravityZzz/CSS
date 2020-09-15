@@ -679,7 +679,7 @@ input[type='number']::-webkit-inner-spin-button {
 7.  颜色  
     rgba(red0-255,green0-255,blue0-255,alpha 不透明度)
     hsla(色调 0-360，饱和度 0-100%，亮度 0-100%，alpha0-1)
-    transparent 完全透明（三角形）
+    transparent 完全透明(三角形)
 
 > 省略文本
 
@@ -723,8 +723,7 @@ input[type='number']::-webkit-inner-spin-button {
 3.  `background-clip: attr ⬇️`背景图片的裁剪(最终显示区域)
     `border-box` 从边框部分开始裁剪  
     `padding-box` 从 padding 部分开始裁剪  
-    `content-box` 从 content 部分开始裁剪  
-
+    `content-box` 从 content 部分开始裁剪
 
 ## 边框与渐变
 
@@ -754,7 +753,7 @@ input[type='number']::-webkit-inner-spin-button {
     ​ stretch 默认拉伸 repeat 重复 round 压缩重复  
     ​ 边框图片向外延伸 border-image-outset 不能取负数  
      边框圆角 `border-radius :水平半径/垂直半径;`  
-    ​ 水平或者垂直半径遵循（从左上角开始）顺时针原则，缺省的值找对角
+    ​ 水平或者垂直半径遵循(从左上角开始)顺时针原则，缺省的值找对角
 
 ```css
 /*边框渐变*/
@@ -776,14 +775,14 @@ input[type='number']::-webkit-inner-spin-button {
 
 2. `radial-gradient: attr ⬇️` 径向界面  
     1.radial-webkit-gradient(圆心，颜色 开始渐变的位置)  
-   ​ 2.radial-webkit-gradient(圆心，size||shape,颜色 开始渐变的位置）  
+   ​ 2.radial-webkit-gradient(圆心，size||shape,颜色 开始渐变的位置)  
    ​ `size大小 attr⬇️`  
    ​ closest-side:最近边 farthest-side:最远边  
-   ​ closest-corner:最近角 farthest-corner:最远角（默认值）  
+   ​ closest-corner:最近角 farthest-corner:最远角(默认值)  
    ​ `shape形状: attr⬇️`  
-   ​ ellipse 椭圆形（默认） circle 表示圆形
+   ​ ellipse 椭圆形(默认) circle 表示圆形
 3. ` repeating-radial-gradient: attr ⬇️`  
-    用法同上
+   用法同上
 
 ```css
 /*图片背景渐变*/
@@ -843,7 +842,7 @@ input[type='number']::-webkit-inner-spin-button {
 
 **(二)transform 状态**
 
-1. 移动变换 transform:translate(水平方向（右正），垂直方向（下正）)  
+1. 移动变换 transform:translate(水平方向(右正)，垂直方向(下正))  
    ​ 改变某个方向 transform:translateX(水平方向) transform:translateY(垂直方向)  
    ​ \*取值取百分比的话，指的是自己的宽高 transform:translate(-50%, -50%)
 
@@ -867,7 +866,7 @@ input[type='number']::-webkit-inner-spin-button {
 1. `transform：translate3d(x,y,z);`移动变换  
    `transform:translateZ(z);`其他方向同理
 2. `transform-style：attr ⬇️;`变换方式  
-   flat 平面(默认) preserve-3d 保持 3d 变换（父元素上）
+   flat 平面(默认) preserve-3d 保持 3d 变换(父元素上)
 
 3. `perspective: 数值;`设置管擦的距离,景深(父元素上)
 
@@ -959,7 +958,7 @@ input[type='number']::-webkit-inner-spin-button {
     column 从上到下 column-reverse 从下往上
 3.  `flex-wrap:alt ⬇;️` 设置子项目换行  
      nowrap 默认不换行 wrap 换行  
-     wrap-reverse 换行反向 主轴水平时，上下反向，主轴垂直时，左右反向  
+     wrap-reverse 换行反向 主轴水平时，上下反向，主轴垂直时，左右反向
 
 4.  `flex-flow:flex-direction||flex-wrap`
 
@@ -968,14 +967,14 @@ input[type='number']::-webkit-inner-spin-button {
      *flex-end 在主轴的终点位置靠奇摆放  
      *center 在主轴的中间位置靠奇摆放  
      *space-between 将主轴方向空白区域平分在子项目之间  
-     \*space-around 将主轴方向空白区域环绕在子项目之间  
+     \*space-around 将主轴方向空白区域环绕在子项目之间
 
 6.  `align-items:alt ⬇;️` 设置子项目在侧轴方向的对齐方式(当前行)  
      *stretch 若不设置子项目在侧轴方向的大小，会被默认拉伸  
      *flex-start 若设置子项目在侧轴的大小，会被默认摆放在侧轴起点位置  
      *flex-end 摆放在侧轴的终点位置  
      *center 摆放在侧轴的中间位置  
-     \*baseline 子项目以基线对齐  
+     \*baseline 子项目以基线对齐
 
 7.  `align-content:alt ⬇;️` 控制子项目在侧轴方向的对齐方式(换行)  
      *flex-start 默认在主轴的起点位置靠奇摆放  
@@ -988,24 +987,23 @@ input[type='number']::-webkit-inner-spin-button {
 
 1.  `flex: 数值;` 设置子项目在主轴方向的比份
 
-2.  `align-self: alt⬇️;` 设置单个子项目在（当前行）侧轴方向的对齐方式  
+2.  `align-self: alt⬇️;` 设置单个子项目在(当前行)侧轴方向的对齐方式  
      *stretch 若不设置子项目在侧轴方向的大小，会被默认拉伸  
      *flex-start 若设置子项目在侧轴的大小，会被默认摆放在侧轴起点位置  
      *flex-end 摆放在侧轴的终点位置  
      *center 摆放在侧轴的中间位置  
      \*baseline 子项目以基线对齐
 
-3.  `justify-self: alt⬇️;` 设置单个子项目在（当前行）主轴方向的对齐方式  
+3.  `justify-self: alt⬇️;` 设置单个子项目在(当前行)主轴方向的对齐方式  
      *stretch 若不设置子项目在侧轴方向的大小，会被默认拉伸  
      *flex-start 若设置子项目在侧轴的大小，会被默认摆放在侧轴起点位置  
      *flex-end 摆放在侧轴的终点位置  
      *center 摆放在侧轴的中间位置  
-     \*baseline 子项目以基线对齐  
+     \*baseline 子项目以基线对齐
 
 4.  `order: 数值;` 设置子项目的显示顺序  
      设置了 order 会放在没设置 order 子项目后面  
-     都设置了 order,数字越小越靠前  
-
+     都设置了 order,数字越小越靠前
 
 ## 17.布局
 
@@ -1021,7 +1019,7 @@ input[type='number']::-webkit-inner-spin-button {
 **(二)媒体查询**
 
 布局视口 viewpoint:比实际屏幕尺寸大很多，保证页面完整显示，但是全局缩小后的页面。  
-理想视口 viewpoint:meta 标签实现(meta:vp)（移动端一定要加这个）
+理想视口 viewpoint:meta 标签实现(meta:vp)(移动端一定要加这个)
 
 width 控制 viewpoint 的宽度，可以是固定值，也可以是 device-width 设备宽度  
 user-scalable:用户是否可以缩放  
@@ -1032,8 +1030,8 @@ minimum-scale 最小缩放比例
 媒体查询
 1.@media screen and (条件){CSS 样式}
 @media screen and(min-width:768px){
-2.min-width 当页面宽度大于最小宽度，生效（从小写到大）
-max-width 当页面宽度大于最小宽度，生效（从大写到小）
+2.min-width 当页面宽度大于最小宽度，生效(从小写到大)
+max-width 当页面宽度大于最小宽度，生效(从大写到小)
 min_device-width [设备宽度] 设备改变宽度才生效
 3.link[media="screen and (条件)"][href]
 
@@ -1042,7 +1040,7 @@ min_device-width [设备宽度] 设备改变宽度才生效
 1.  自适应布局
     元素的宽高自适应窗口或者子元素的大小，从而实现同一套页面适应  
     不同的窗口、分辨率以及设备。
-2.  响应式布局（一般用在比较简单界面）
+2.  响应式布局(一般用在比较简单界面)
     相应不同的屏幕带下或者设备大小，对同一套页面的部分布局进行修改  
     但是大体上一致。一般用在比较简单界面。
 
