@@ -941,9 +941,13 @@ input[type='number']::-webkit-inner-spin-button {
 
 - [7 个面](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/7-sidedRotation.html, "case")
 - [正方形选择](http://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/BoxRotation.html, "case")
-- [7 个面](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/7-sidedRotation.html, "case")
-- [7 个面](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/7-sidedRotation.html, "case")
-- [7 个面](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/7-sidedRotation.html, "case")
+- [泡泡](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/Bubble.html, "case")
+- [轮播图](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/Carousel.html, "case")
+- [时钟](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/Clock.html, "case")
+- [抽帧动画](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/FrameAnimation.html, "case")
+- [导航](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/Navigation.html, "case")
+- [扑克牌](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/PokerRotation.html, "case")
+- [宇宙公转](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/SpaceSpin.html, "case")
 
 ## 16.弹性盒与布局
 
