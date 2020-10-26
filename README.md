@@ -1,4 +1,4 @@
-# 认识 React
+# 认识 层叠样式表(Cascading Style Sheets, 缩写为 CSS)
 
 HTML 是 Hypertext Markup Language 的缩写，即超文本标记语言：
 
@@ -949,7 +949,7 @@ input[type='number']::-webkit-inner-spin-button {
 - [扑克牌](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/PokerRotation.html)
 - [宇宙公转](https://htmlpreview.github.io/?https://github.com/GravityZzz/CSS/blob/master/src/Case/SpaceSpin.html)
 
-## 16.弹性盒与布局
+## 16.弹性盒与布
 
 **(一)设置在父元素上**
 
@@ -1098,3 +1098,48 @@ min_device-width [设备宽度] 设备改变宽度才生效
 # 题外话
 
 这份教程是综合了[Y.Pig](https://github.com/Wscats/react-tutorial)和[DK](https://github.com/dk-lan/react)的内容，因为代码和文档比较多，整理中如有疏漏或者错误，可以在 Issues 中提出，多多谅解，希望对你们有帮助，如果你喜欢可以点个 Star 或者 Fork ，谢谢~
+
+# 介绍
+
+互联网所有的传输都通过 RCP/IP 协议族来传输，TCP/IP 是**面向连接**的**可靠**字节流服务协议
+
+# TCP/IP 协议族
+
+**有四层**
+
+- 应用层：提供特定于应用程序的协议 HTTP FTP IMAP(邮件)
+- 网络控制层 发送数据包到计算机上使用特定的端口号的应用程序
+- 网络层 使用 IP 地址将数据包发送到特定的计算
+- 链路层 将二进制数据包与网络信号相互之间转换
+
+**TCP 的可靠**
+
+tcp 在建立连接会进行三次握手，每个收到的数据包都会向发送方发送 ack 确认，已确保发送成功
+
+**IP 的传输**
+
+IP 是不可靠的无连接协议，它并不关心数据包是否到达目的地，也不关系连接和端口号，目的是连接到目标 IP
+
+**TCP 传输的质量和顺序**
+
+当数据包过大，在网络层会进行分包，分包后传输的链路不一样，到达的时间不一样，TCP 会根据数据包上携带序列号来进行排序重组，如果发送方在一个特定时间内（也就是重试时间）没有接受到接收方的 ack 确认，会再次重新发送
+
+**IP 和 IP 地址的区别**
+
+Ip 是一种协议 有两种标准 IPv4 2^32 次方和 IPv6 2^128
+
+IP 地址是一串数字 192.0.0.1
+
+**网络传输**
+
+1. 个人电脑
+2. 猫
+3. local ISP 互联网服务提供商
+4. regional ISP 经过多个主干网络
+5. NSP 网络服务提供商 大型网络 卖带宽给 ISP
+6. NAP 每个 NSP 连接到至少三个网络访问点
+7. ISP NSP 所有网络提供都携带路由器，每个路由有当前子网络 ip 的路由表，当底层向上层发送数据时候，找不到会依次向上找，可能由一个主干网络跳到另外一个主干网络。
+
+**DNS 服务**
+
+存在意义是 IP 别名，不让公司丢客户，也容易记，DNS 是一个分布式数据库，存储了域名和 IP 的对应关系

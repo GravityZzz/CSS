@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%
+    }
+
+    #bigbox {
+      margin: 0 auto;
+      width: 600px;
+      margin-top: 100px;
+    }
+
+    #bigbox > .show {
+      background: #000;
+      width: 100%;
+      height: 400px;
+      position: relative
+    }
+
+    #bigbox > .show .bar-item {
+      position: absolute;
+      left: 100%;
+      white-space: nowrap;
+    }
+
+    #bigbox > .shuru {
+      background: #ccc;
+      width: 100%;
+      height: 60px;
+    }
+
+    #bigbox > .shuru > label {
+      display: inline-block;
+      line-height: 60px;
+      font-size: 18px;
+      width: 200px;
+      text-align: right
+    }
+
+    #bigbox > .shuru > .msg {
+      height: 20px;
+    }
+
+    #bigbox > .shuru > .btn {
+      padding: 10px 20px;
+      font-size: 12px;
+      box-sizing: border-box
+    }
+  </style>
+  <script src="../common.js"></script>
+  <script>
+    // 页面对象page(一个)
+    // 属性: 显示区域、文本框、按钮
+    // 方法：
+    //     初始化：获取元素。点击按钮，获取内容，创建弹幕(将内容传过去)
+
+    // 弹幕对象Barrage（多个）
+    // 属性：内容、颜色、字体大小、垂直位置、速度、
+    // 方法：
+    //     初始化：创建一个元素，添加内容，添加类名，追加到显示区域中
+    //     移动：从当前位置移到最左边left：-自己的宽度。移动完毕后，删除该元素
+    //     删除： 让爸爸把我删掉
+    document.addEventListener("DOMContentLoaded", function () {
+      // 页面对象page(一个)
+      // 属性: 显示区域、文本框、按钮
+      // 方法：
+      //     初始化：获取元素。点击按钮，获取内容，创建弹幕(将内容传过去)
+      var page = {
+        show: ".show",
+        msg: ".msg",
+        btn: ".btn",
+        init: function () {
+          var app = this;
+          this.show = document.querySelector(this.show);
+          this.msg = document.querySelector(this.msg);
+          this.btn = document.querySelector(this.btn);
+
+          this.btn.onclick = () => {
+            console.log(this)
+            var _msg = this.msg.value;
+            // 弹幕对象render（多个）
+            var b = new render(_msg);
+            b.init();
+            //new render(_msg).init();
+          }
+        }
+      }
+
+      //// 属性：内容、颜色、字体大小、垂直位置、速度、
+      function render(msg) {
+        this.msg = msg;
+        this.color = getRandomColor();
+        this.fontsize = getRandomNum(12, 24);
+        this.top = getRandomNum(0, page.offsetHeight - this.fontsize);
+        this.timer = getRandomNum(30, 100);
+      }
+
+      //初始化：创建一个元素，添加内容，添加类名，追加到显示区域中
+      render.prototype.init = function () {
+        this.span = document.createElement("span");
+        this.span.classList.add("bar-item");
+        this.span.innerText = this.msg;
+        this.span.style.color = this.color;
+        this.span.style.fontSize = this.fontsize + 'px';
+        this.span.style.top = this.top;
+        page.show.appendChild(this.span);
+        this.move();
+      }
+      //移动：从当前位置移到最左边left：-自己的宽度。移动完毕后，删除该元素
+      render.prototype.move = function () {
+        bufferAnimation(this.span, {left: -this.span.offsetWidth}, this.timer, () => {
+          this.span.parentElement.removeChild(this.span);
+        })
+      }
+      render.prototype.xs = function () {
+        this.remove();
+      }
+      render.prototype.remove = function () {
+        this.span.parentElement.removeChild(this.span);
+      }
+      page.init();
+      // setInterval(function ()
+      // {
+      //     document.getElementsByClassName("b-btn")[0].onclick=function ()
+      //     {
+      //         document.getElementsByClassName("cs-textarea")[0].value="哈哈哈";
+      //     }
+      // },300)
+      var timer = setInterval(function () {
+        document.getElementsByClassName("ChatSend-txt")[0].value = "aaa";
+        document.getElementsByClassName("ChatSend-button ")[0].click();
+      }, 30)
+      // clearInterval(timer)
+    })
+
+
+  </script>
+
+</head>
+<body>
+<div class="b-btn"></div>
+<div class="cs-textarea"></div>
+<div id="bigbox">
+  <div class="show"></div>
+  <div class="shuru">
+    <label for="Chat-txt">弹幕：</label>
+    <input type="text" id="Chat-txt" class="msg">
+    <input type="button" class="btn" value="发送">
+  </div>
+</div>
+</body>
+</html>

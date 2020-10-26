@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放烟花效果</title>
+    <style type="text/css">
+        html, body {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        body, div, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            font: 12px/1.5 arial;
+            color: #7A7A7A;
+        }
+
+        a {
+            text-decoration: none;
+            outline: none;
+        }
+
+        #tips, #copyright {
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            background: #171717;
+            border: 2px solid #484848;
+        }
+
+        #tips {
+            top: 0;
+            border-width: 0 0 2px;
+        }
+
+        #tips a {
+            font: 14px/30px arial;
+            color: #FFF;
+            background: #F06;
+            display: inline-block;
+            margin: 10px 5px 0;
+            padding: 0 15px;
+            border-radius: 15px;
+        }
+
+        #tips a.active {
+            background: #FE0000;
+            position: absolute
+        }
+
+        .fire {
+            width: 3px;
+            height: 30px;
+            background: white;
+            position: absolute;
+            top: 100%;
+
+        }
+
+        .spark {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            left: 0;
+            top: 0;
+        }
+
+        #output {
+            width:100%;
+            height:100%;
+            overflow: hidden;
+        }
+    </style>
+
+    <script src="../common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            /*对象：
+               页面page：
+                    属性：点击区域
+                    方法：
+                        点击，获取光标位置，把位置给烟花对象
+                烟花对象Fire：
+                    属性：水平位置、最后烟花到达的垂直位置、速度、烟火的爆炸半径、烟火个数
+                    方法:
+                        初始化：在页面中插入一个元素，设置好样式、定位
+                        移动：从下往上移动到光标位置后，爆炸（调用创建烟火对象）
+                        创建多个烟火对象：根据烟火个数，获取烟火的角度
+                烟火对象Spark：
+                    属性：
+                        烟火角度、爆炸半径
+                    方法：
+                        初始化：
+                            根据烟火角度、半径获取定位，颜色
+                        移动：
+                            移动到指定定位。移动完成后，移除
+                        移除：
+                            让页面把整个烟花对象删掉
+            */
+            const page = {
+                output: "#output",
+                btn: "#auto",
+                tips: "#tips",
+                init: function () {
+                    this.output = document.querySelector(this.output);
+                    this.tips = document.querySelector(this.tips);
+                    this.tips.style.height = 50 + 'px';
+                    let show = false;
+                    let start;
+                    document.querySelector("#auto").onclick = () => {
+                        if (!show) {
+                            start = setInterval(function () {
+                                const a = new Fireworks();
+                                a.init();
+                            }, 1000)
+                        } else {
+                            clearInterval(start);
+                        }
+                        show = !show;
+                    }
+                }
+            }
+
+            function Fireworks() {
+                // 属性：水平位置、最后烟花到达的垂直位置、速度、烟火的爆炸半径、烟火个数
+                this.span = document.createElement("span");
+                this.backgroundColor = getRandomColor();// 获取随机颜色
+                this.left = getRandomNum(0, page.output.offsetWidth - this.span.offsetHeight);
+                this.timer = getRandomNum(30, 100);
+                this.r = getRandomNum(100, 200);
+                this.qty = getRandomNum(10, 16);
+                console.log(page.tips.offsetHeight);
+            }
+
+            Fireworks.prototype.init = function () {
+                // 初始化：在页面中插入一个元素，设置好样式、定位
+                for (let i = 0; i < 10; i++) {
+                    this.span.style.display = 'block';
+                    this.span.classList.add("fire");
+                    this.span.style.left = this.left + 'px';
+                    this.span.style.backgroundColor = this.backgroundColor
+                    console.log(page.output)
+                    page.output.appendChild(this.span);
+                    this.move();
+                }
+                console.log(this.output);
+
+            }
+            Fireworks.prototype.move = function () {
+                // 移动：从下往上移动到光标位置后，爆炸（调用创建烟火对象）
+                bufferAnimation(this.span, {
+                    top: getRandomNum(page.tips.offsetHeight, page.output.offsetHeight - this.span.offsetHeight),
+                    height: 3
+                }, this.timer, () => {
+                    //创建多个烟火对象：根据烟火个数，获取烟火的角度
+                    this.boom();
+                })
+            }
+            Fireworks.prototype.boom = function () {
+                this.deg = 360 / this.qty;
+                for (let i = 0; i < this.qty; i++) {
+                    this.span.style.backgroundColor = 'rgba(0,0,0,0)';
+                    const b = new Spark(this.deg * i, this.r, this.span, this.backgroundColor);
+                    b.init();
+                }
+            }
+
+            /* 属性：烟火角度、爆炸半径*/
+            function Spark(deg, r, parent, backgroundColor) {
+                this.deg = deg;
+                this.r = r;
+                this.parent = parent;
+                this.backgroundColor = backgroundColor;
+            }
+
+            /* 初始化：根据烟火角度、半径获取定位，颜色*/
+            Spark.prototype.init = function () {
+                this.span1 = document.createElement("span");
+                this.span1.style.backgroundColor = this.backgroundColor;
+                this.span1.classList.add("spark");
+                this.parent.appendChild(this.span1);
+                this.move();
+            }
+            // 存储span1爆炸后的X,Y值
+            Spark.prototype.getPos = function () {
+                this.rad = Math.PI / 180 * this.deg;
+                this.endX = Math.sin(this.rad) * this.r;
+                this.endY = Math.cos(this.rad) * this.r;
+            }
+            /* 移动：移动到指定定位。移动完成后，移除*/
+            Spark.prototype.move = function () {
+                this.getPos();
+                bufferAnimation(this.span1, {
+                    left: parseInt(this.endX),
+                    top: parseInt(this.endY),
+                    opacity: 0.3
+                }, 30, () => {
+                    this.parent.parentElement.removeChild(this.parent);
+                })
+            }
+            page.init();
+        });
+    </script>
+</head>
+<body>
+<div id="tips">
+    <a id="auto" class="">自动放烟花</a>
+</div>
+<div id="output"></div>
+</body>
+</html>
