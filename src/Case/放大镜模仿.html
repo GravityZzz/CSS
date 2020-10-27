@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{overflow: hidden;}
+        *{margin: 0;padding: 0;}
+        #box{float: left;border: 2px solid #ccc;box-sizing: border-box;position: relative;left: 100px;top: 100px;}
+        #box>.bigImg{width: 400px;height: 400px;position: relative;}
+        #box>.bigImg>.mask{position: absolute;left: 0;top: 0;width: 100px;height: 100px;background: #000;opacity: 0.5;display: none;}
+        #box>.bigImg>img{height: 300px;width: 100%;}
+        #box>.minImg{width: 400px;height: 60px;border: 2px solid #ccc;box-sizing: border-box;position: absolute;left: 0;bottom: 0;}
+        #box>.minImg>li{list-style: none;float: left;margin: 0 15px;}
+        #box>.minImg>li>img{width: 60px;height: 50px;}
+        .active{border: 2px solid red;}
+        .showImg{float: left;display: none;}
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded",function ()
+        {
+            var box=document.getElementById("box");
+            var bigImg=document.getElementsByClassName("bigImg")[0];
+            var minImg=document.getElementsByClassName("minImg")[0];
+            var lis=minImg.children;
+            var showImg=document.getElementsByClassName("showImg")[0];
+            for (var i=0;i<=lis.length-1;i++)
+            {
+                lis[i].onmouseover=function ()
+                {
+                    for (var j=0;j<=lis.length-1;j++)
+                    {
+                        lis[j].classList.remove("active");
+                    }
+                    this.classList.add('active');
+                    bigImg.children[0].src=this.children[0].src;
+                    showImg.children[0].src=this.children[0].src;
+                }
+            }
+            var mask=bigImg.children[1];
+            bigImg.onmouseover=function ()
+            {
+                mask.style.display='block';
+                showImg.style.display='block';
+               /* var ox=evt.pageX-bigImg.offsetLeft-mask.offsetLeft;
+                var oy=evt.pageY-bigImg.offsetTop-mask.offsetTop;*/
+                document.onmousemove=function (e)
+                {
+                    var ox=e.pageX-box.offsetLeft-(mask.offsetWidth)/2;
+                    var oy=e.pageY-box.offsetTop-(mask.offsetHeight)/2;
+                    var maxX=box.offsetWidth-mask.offsetWidth;
+                    var maxY=box.offsetHeight-mask.offsetHeight;
+                    if (ox>maxX)
+                    {
+                        ox=maxX;
+                    }
+                    else if (oy>maxY)
+                    {
+                        oy=maxY;
+                    }
+                    else if (ox<=0)
+                    {
+                        ox=0;
+                    }
+                    else if (oy<=0)
+                    {
+                        oy=0;
+                    }
+                    mask.style.left=ox+'px';
+                    mask.style.top=oy+'px';
+                }
+            }
+            bigImg.onmouseout=function ()
+            {
+                mask.style.display='none';
+                showImg.style.display='none';
+            }
+
+        })
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div class="bigImg">
+            <img src="../images/min1.jpg"/>
+            <div class="mask"></div>
+        </div>
+        <ul class="minImg">
+            <li><img src="../images/min1.jpg"/></li>
+            <li><img src="../images/min2.jpg"/></li>
+            <li><img src="../images/min3.jpg"/></li>
+            <li><img src="../images/min4.jpg"/></li>
+        </ul>
+    </div>
+    <div class="showImg"><img src="../images/max1.jpg" height="800" width="800"/></div>
+</body>
+</html>
